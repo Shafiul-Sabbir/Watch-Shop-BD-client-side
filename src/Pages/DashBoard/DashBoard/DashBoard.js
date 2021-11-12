@@ -1,15 +1,32 @@
-import React  from "react";
+import {useEffect,useState} from "react";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
+import useFirebase from "../../../hooks/useFirebase";
 // import "./Dashboard.css";
 import './DeshBoard.css'
 import AddService from "../../../Pages/AddService/AddService";
 import Reviwe from "../../../Pages/Reviwe/Reviwe";
-
+import MakeAdmin from "../../../Pages/MakeAdmin/MakeAdmin"
+import Orders from "../../../Pages/Orders/Orders"
+import MangeServices from "../../MagnegeService/MangeServices"
 const DashBoard = () => {
     let { path, url } = useRouteMatch();
-    const { user } = useAuth()
-    // const [isAdmi, setIsAdmin] = useState(false);
+    const { user } = useFirebase();
+    const [isAdmin, setIsAdmin] = useState(false);
+    useEffect(() => {
+      fetch(`http://localhost:5000/checkAdmin/${user?.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data[0]?.role
+            === "admin") {
+            setIsAdmin(true);
+          } else {
+            setIsAdmin(false);
+          }
+
+          console.log(data);
+        });
+    }, [user?.email]);
+    console.log(isAdmin);
     return (
         <div>
         <div className="dashboard-container ">
@@ -17,9 +34,7 @@ const DashBoard = () => {
             <div className="col-md-3 ">
               <div className="dashboard">
                 <h5>Dashboard</h5>
-                <Link to={`${url}`}>
-                  <li className="dashboard-menu mt-5">M</li>
-                </Link>
+                
   
                 <Link to={`${url}/BookingList`}>
                   <li className="dashboard-menu mt-5">Booking list</li>
@@ -29,15 +44,29 @@ const DashBoard = () => {
                   <li className="dashboard-menu mt-5">Review</li>
                 </Link>
                 <div className="admin-dashboard">
-                  <li className="dashboard-menu mt-5">Orders</li>
-  
+                  
+  {
+    isAdmin&&
+    
+    <div>
+  <Link to={`${url}/mange`}>
+                    <li className="dashboard-menu mt-5">Manage</li>
+                    </Link>
+                    <Link to={`${url}/orders`}>
+                    <li className="dashboard-menu mt-5">Orders</li>
+                    </Link>
                    
                     <Link to={`${url}/addservice`}>
                       <li className="dashboard-menu">Add Product</li>
                     </Link>
-                  
-                  
+                    <Link to={`${url}/makeAdmin`}>
                     <li className="dashboard-menu">Make Admin</li>
+                </Link>
+  </div>}
+                   
+                    
+                  
+                    
                   
                  
                     {/* <li className="dashboard-menu">Manage Service</li> */}
@@ -52,6 +81,16 @@ const DashBoard = () => {
               </Route>
                 <Route path={`${path}/reviwe`}>
                 <Reviwe></Reviwe>
+              </Route>
+                <Route path={`${path}/orders`}>
+                <Orders></Orders>
+              </Route>
+                <Route path={`${path}/mange`}>
+                <MangeServices></MangeServices>
+              </Route>
+                
+                <Route path={`${path}/makeAdmin`}>
+                <MakeAdmin></MakeAdmin>
               </Route>
               </Switch>
             

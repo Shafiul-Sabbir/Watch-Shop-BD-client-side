@@ -24,44 +24,24 @@ const Header = () => {
             <Nav.Link as={HashLink} to="/home">
               Home
             </Nav.Link>
-            <Nav.Link as={HashLink} to="/home#services">
+            {/* <Nav.Link as={HashLink} to="/home#services">
               Products
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link as={HashLink} to="/home#experts">
-              More Products
+           EXPOLRE
             </Nav.Link>
+           {user.email&& 
+           <Nav.Link as={HashLink} to="/deshboard">
+             DashBoard
+            </Nav.Link>}
 
-            {user.email ? (
-              <div>
-                <NavDropdown
-                  variant="text-light"
-                  title="Manage Service"
-                  id="basic-nav-dropdown"
-                >
-                  <Nav.Link className="text-black" as={HashLink} to="/orders">
-                    {/* <button >My Order</button> */}
-                    order
-                  </Nav.Link>
-                  <Nav.Link className="text-black" as={HashLink} to="/mange">
-                    {/* <button >Mange</button> */}
-                    Mange
-                  </Nav.Link>
-                  <br />
-                  <Nav.Link
-                    className="text-black"
-                    as={HashLink}
-                    to="/addservice"
-                  >
-                    {/* <button >Add Service</button> */}
-                    Add Product
-                  </Nav.Link>
-                </NavDropdown>
-              </div>
-            ) : (
-              ""
-            )}
+           
 
-            {user?.email ? (
+           
+
+
+
+{user?.email ? (
               <Button
                 onClick={logOut}
                 className="Rounded btn-danger m-2"
@@ -74,7 +54,6 @@ const Header = () => {
                 <button className="btn-danger">Login</button>
               </Nav.Link>
             )}
-
             <Navbar.Text>
              {user.email && <a  href="#login" className="text-white">
                 {user?.displayName ? user?.displayName : user?.email}
