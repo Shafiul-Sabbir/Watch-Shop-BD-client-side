@@ -15,7 +15,7 @@ const ReviweShow = () => {
     return (
         <div >
            <div className="mt-5">
-           <h1>Reviwe Coustomer</h1>
+           <h1>Review Coustomer</h1>
            {
             reviwe.map(reviwes=><div>
                 <h5>Email : {reviwes.email}</h5>

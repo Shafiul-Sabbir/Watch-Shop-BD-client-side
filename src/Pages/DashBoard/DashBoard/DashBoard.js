@@ -7,6 +7,7 @@ import AddService from "../../../Pages/AddService/AddService";
 import Reviwe from "../../../Pages/Reviwe/Reviwe";
 import MakeAdmin from "../../../Pages/MakeAdmin/MakeAdmin"
 import Orders from "../../../Pages/Orders/Orders"
+import AllOrder from "../../../Pages/AllOrders/AllOrder"
 import MangeServices from "../../MagnegeService/MangeServices"
 const DashBoard = () => {
     let { path, url } = useRouteMatch();
@@ -62,6 +63,9 @@ const DashBoard = () => {
                     <Link to={`${url}/makeAdmin`}>
                     <li className="dashboard-menu">Make Admin</li>
                 </Link>
+                    <Link to={`${url}/allorder`}>
+                    <li className="dashboard-menu">Manage Order</li>
+                </Link>
   </div>}
                    
                     
@@ -69,7 +73,7 @@ const DashBoard = () => {
                     
                   
                  
-                    {/* <li className="dashboard-menu">Manage Service</li> */}
+                    
                  
                 </div>
               </div>
@@ -91,6 +95,9 @@ const DashBoard = () => {
                 
                 <Route path={`${path}/makeAdmin`}>
                 <MakeAdmin></MakeAdmin>
+              </Route>
+                <Route path={`${path}/allorder`}>
+                <AllOrder></AllOrder>
               </Route>
               </Switch>
             

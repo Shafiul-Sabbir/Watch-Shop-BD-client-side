@@ -14,8 +14,10 @@ import MangeServices from "./Pages/MagnegeService/MangeServices";
 import Footer from "./Pages/Footer/Footer";
 import MyOrder from "./Pages/MyOrder/MyOrder";
 import Orders from "./Pages/Orders/Orders";
+import AllOrder from "./Pages/AllOrders/AllOrder";
 import Reviwe from "./Pages/Reviwe/Reviwe";
 import ReviweShow from "./Pages/Reviwe/ReviweShow";
+
 import DashBoard from "./Pages/DashBoard/DashBoard/DashBoard";
 
 function App() {
@@ -61,6 +63,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute exact path="/orders">
               <Orders></Orders>
+            </PrivateRoute>
+            <PrivateRoute exact path="/allOrders">
+              <AllOrder></AllOrder>
             </PrivateRoute>
             <PrivateRoute  path="/deshboard">
               <DashBoard></DashBoard>
