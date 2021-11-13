@@ -10,7 +10,7 @@ const Reviwe = () => {
     const {user}=useAuth()
     const onSubmit = (data) => {
     //    handelRegister(data?.email,data?.password)
-    fetch("http://localhost:5000/addSReview", {
+    fetch("https://intense-escarpment-25423.herokuapp.com/addSReview", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),

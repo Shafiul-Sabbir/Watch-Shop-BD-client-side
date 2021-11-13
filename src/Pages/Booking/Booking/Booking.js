@@ -6,7 +6,7 @@ const Booking = () => {
   const { serviceId } = useParams();
   const [service, setService] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${serviceId}`)
+    fetch(`https://intense-escarpment-25423.herokuapp.com/services/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
@@ -20,13 +20,13 @@ const Booking = () => {
       <h2>this is booking: {serviceId}</h2>
       <br /> <br />
       <br />
-      <img className="w-25" src={service.img} alt="" />
-      <h1>Details of : {service.name}</h1>
-      <p>{service.discription}</p>
-      <h5>Price:{service.Price}</h5>
+      <img className="w-25" src={service?.img} alt="" />
+      <h1>Details of : {service?.name}</h1>
+      <p>{service?.discription}</p>
+      <h5>Price:{service?.Price}</h5>
         <button
           className="btn-danger p-2 mt-2"
-          onClick={() => handleOrder(service._id)}
+          onClick={() => handleOrder(service?._id)}
         >
           My order
         </button>

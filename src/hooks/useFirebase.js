@@ -67,7 +67,7 @@ const handelLogin=(email,password)=>{
 }
 
 const hanldeUserInfoRegister = (email) => {
-    fetch("http://localhost:5000/addUserInfo", {
+    fetch("https://intense-escarpment-25423.herokuapp.com/addUserInfo", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ email }),

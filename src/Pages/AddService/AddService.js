@@ -6,7 +6,7 @@ const AddService = () => {
       const { register, reset,handleSubmit } = useForm();
   const onSubmit = data =>{ 
       console.log(data)
- axios.post('http://localhost:5000/services',data)
+ axios.post('https://intense-escarpment-25423.herokuapp.com/services',data)
     .then(res=>{
         if(res.data.insertedId){
 alert('Added SucsessFully')

@@ -5,7 +5,7 @@ const ReviweShow = () => {
     const { user } = useAuth();
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/addSReview`)
+        fetch(`https://intense-escarpment-25423.herokuapp.com/addSReview`)
         .then(res=>res.json())
         .then(data=>setReviwe(data))
         

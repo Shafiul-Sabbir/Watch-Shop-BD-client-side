@@ -11,7 +11,7 @@ const AllOrder = () => {
 
   console.log(status);
   useEffect(() => {
-    fetch("http://localhost:5000/allOrders")
+    fetch("https://intense-escarpment-25423.herokuapp.com/allOrders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
@@ -24,7 +24,7 @@ const handleOrderId = (id) => {
 
   const onSubmit = (data) => {
     console.log(data, orderId);
-    fetch(`http://localhost:5000/statusUpdate/${orderId}`, {
+    fetch(`https://intense-escarpment-25423.herokuapp.com/statusUpdate/${orderId}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -35,32 +35,32 @@ const handleOrderId = (id) => {
 
 
     return (
-        <div>
+        <div className="text-white bg-danger m-5">
             <h2>This AllOrder</h2>
-            <Table striped bordered hover>
-        <thead>
-          <tr>
+            <Table striped bordered hover className="bg-dark ">
+        <thead className="text-white">
+          <tr >
             <th>#</th>
             <th>Service Title</th>
             <th>Event description</th>
             <th>Image Link</th>
             <th>Status</th>
-            <th>Action</th>
+           
           </tr>
         </thead>
         {orders?.map((pd, index) => (
-          <tbody>
-            <tr>
-              <td>{index}</td>
-              <td>{pd?.name}</td>
-              <td>{pd?.description}</td>
-              <td>{pd?.image}</td>
+          <tbody className="text-white">
+            <tr >
+              <td className="text-white">{index}</td>
+              <td className="text-white">{pd?.name}</td>
+              <td className="text-white">{pd?.description}</td>
+              <td className="text-white">{pd?.image}</td>
               <td>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <select
                     onClick={() => handleOrderId(pd?._id)}
                     {...register("status")}
-                    className="m-1 bg-warning"
+                    className="m-1 bg-warning text-black"
                   >
                     <option value={pd?.status}>{pd?.status}</option>
                     <option value="approve">approve</option>
@@ -70,8 +70,7 @@ const handleOrderId = (id) => {
                   <input className="m-1 bg-info" type="submit" />
                 </form>
               </td>
-              <button className="btn bg-danger p-1 m-1">Delete</button>
-              <button className="btn bg-success p-1 m-1">Update</button>
+              
             </tr>
           </tbody>
         ))}

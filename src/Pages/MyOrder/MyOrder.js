@@ -16,7 +16,7 @@ const MyOrder = () => {
   const { id } = useParams();
   const [bookORderService, setBookOrderService] = useState();
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${id}`)
+    fetch(`https://intense-escarpment-25423.herokuapp.com/services/${id}`)
       .then((res) => res.json())
       .then((data) => setBookOrderService(data));
   }, []);
@@ -25,7 +25,7 @@ const MyOrder = () => {
     data.image = bookORderService.img;
     data.name = bookORderService.name;
     data.status = "pending";
-    fetch(`http://localhost:5000/orders`, {
+    fetch(`https://intense-escarpment-25423.herokuapp.com/orders`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

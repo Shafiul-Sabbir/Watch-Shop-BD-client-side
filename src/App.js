@@ -17,6 +17,7 @@ import Orders from "./Pages/Orders/Orders";
 import AllOrder from "./Pages/AllOrders/AllOrder";
 import Reviwe from "./Pages/Reviwe/Reviwe";
 import ReviweShow from "./Pages/Reviwe/ReviweShow";
+import Expoler from "./Pages/Expoler/Expoler";
 
 import DashBoard from "./Pages/DashBoard/DashBoard/DashBoard";
 
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route  path="/reviwe">
               <Reviwe></Reviwe>
+            </Route>
+            <Route  path="/expoler">
+            <Expoler></Expoler>
             </Route>
             <Route  path="/addSReview/:id">
               <ReviweShow></ReviweShow>
